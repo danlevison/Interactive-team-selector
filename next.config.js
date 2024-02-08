@@ -4,6 +4,15 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.datocms-assets.com",
+        pathname: "/104939/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

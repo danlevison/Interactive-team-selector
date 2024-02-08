@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import SubTeamDropdown from "./SubTeamDropdown";
 import SubTeamBtnList from "./SubTeamBtnList";
+import SubTeamCard from "./SubTeamCard";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import type { SubTeamCardT } from "@/types";
 
@@ -26,6 +27,8 @@ export default function SubTeamContainer({ subTeams }: SubTeamContainerProps) {
       ) : (
         <SubTeamBtnList subTeams={subTeams} selectedSubTeam={selectedSubTeam} />
       )}
+
+      {selectedSubTeam && <SubTeamCard subTeamDetails={selectedSubTeam} />}
     </>
   );
 }
