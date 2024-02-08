@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import Hero from "@/components/Hero";
+import SubTeamContainer from "@/components/SubTeamContainer";
 import type { SkyDataT } from "@/types";
 
 export default async function Home() {
@@ -10,6 +11,7 @@ export default async function Home() {
   return (
     <main className="container">
       <Hero title={team.subteamsTitle} description={team.subTeamsDescription} />
+      <SubTeamContainer subTeams={team.subTeamCard} />
     </main>
   );
 }
