@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Overlay from "./Overlay";
 import caretDownIcon from "@/../public/caret-down.svg";
 import crossIcon from "@/../public/cross.svg";
 import type { SubTeamCardT } from "@/types";
@@ -39,34 +40,36 @@ export default function SubTeamDropdown({
         />
       </button>
       {isExpanded && (
-        <div className="dropdown-menu animate-up">
-          <div className="dropdown-menu-header">
-            <h3 className="dropdown-menu-title">Select a sub-team</h3>
-            <button
-              onClick={() => setIsExpanded(false)}
-              className="dropdown-menu-close-btn"
-              aria-label="Close menu"
-            >
-              <Image src={crossIcon} alt="" aria-hidden={true} />
-            </button>
+        <Overlay isExpanded={isExpanded} setIsExpanded={setIsExpanded}>
+          <div className="dropdown-menu animate-up">
+            <div className="dropdown-menu-header">
+              <h3 className="dropdown-menu-title">Select a sub-team</h3>
+              <button
+                onClick={() => setIsExpanded(false)}
+                className="dropdown-menu-close-btn"
+                aria-label="Close menu"
+              >
+                <Image src={crossIcon} alt="" aria-hidden={true} />
+              </button>
+            </div>
+            <ul className="dropdown-menu-list">
+              {options.map((option) => (
+                <li key={option.title} className="dropdown-menu-item">
+                  <Link
+                    href={`?sub-team=${option.title}`}
+                    onClick={handleOptionClick}
+                    scroll={false}
+                    className={`dropdown-menu-item-btn ${
+                      selectedSubTeam?.title === option.title ? "active" : ""
+                    }`}
+                  >
+                    {option.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="dropdown-menu-list">
-            {options.map((option) => (
-              <li key={option.title} className="dropdown-menu-item">
-                <Link
-                  href={`?sub-team=${option.title}`}
-                  onClick={handleOptionClick}
-                  scroll={false}
-                  className={`dropdown-menu-item-btn ${
-                    selectedSubTeam?.title === option.title ? "active" : ""
-                  }`}
-                >
-                  {option.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </Overlay>
       )}
     </>
   );
