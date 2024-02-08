@@ -1,1 +1,21 @@
 @import "base";
+@import "breakpoints";
+@import "components/hero";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $sky-white;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 1.5em;
+  margin-top: 50px;
+}

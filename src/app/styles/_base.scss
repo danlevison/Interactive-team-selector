@@ -16,3 +16,18 @@ $sky-gradient: -webkit-linear-gradient(
   #0023ff,
   #1798ff
 );
+
+@mixin gradient-text() {
+  background: -webkit-linear-gradient(
+    left,
+    #ff7800,
+    #f80032,
+    #ff00a0,
+    #8c28ff,
+    #0023ff,
+    #1798ff
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: inline-block;
+}
