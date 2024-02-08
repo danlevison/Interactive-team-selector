@@ -1,0 +1,39 @@
+.sub-team-btn-list {
+  display: none;
+
+  @include md {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .sub-team-btn-item {
+    list-style-type: none;
+
+    .sub-team-btn {
+      display: block;
+      text-decoration: none;
+      color: $sky-text-grey;
+      font-size: 20px;
+      background-color: inherit;
+      border-radius: 8px;
+      border: 1px solid $sky-text-grey;
+      padding: 4px 12px 4px 12px;
+    }
+
+    .active {
+      color: #fff;
+      background-color: $sky-blue;
+      border: 1px solid $sky-blue;
+    }
+
+    & :hover {
+      color: #fff;
+      background-color: $sky-blue;
+      border: 1px solid $sky-blue;
+      transition-duration: 350ms;
+    }
+  }
+}

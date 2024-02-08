@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import SubTeamDropdown from "./SubTeamDropdown";
 import type { SubTeamCardT } from "@/types";
+import SubTeamBtnList from "./SubTeamBtnList";
 
 type SubTeamContainerProps = {
   subTeams: SubTeamCardT[];
@@ -21,6 +22,7 @@ export default function SubTeamContainer({ subTeams }: SubTeamContainerProps) {
   return (
     <>
       <SubTeamDropdown options={subTeams} selectedSubTeam={selectedSubTeam} />
+      <SubTeamBtnList subTeams={subTeams} selectedSubTeam={selectedSubTeam} />
     </>
   );
 }
