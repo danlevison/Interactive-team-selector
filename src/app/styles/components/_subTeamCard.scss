@@ -97,6 +97,56 @@
       }
     }
 
+    .sub-team-card-video-overlay {
+      position: relative;
+      height: 100%;
+
+      &::before {
+        content: none;
+      }
+
+      .sub-team-card-image-overlay {
+        width: 100%;
+        max-height: 200px;
+        margin-top: 20px;
+        object-fit: cover;
+
+        @include sm {
+          min-height: 250px;
+        }
+
+        @include md {
+          margin-top: 0;
+          border-top-right-radius: 8px;
+          min-height: 99%;
+        }
+
+        @include lg {
+          min-height: 98.8%;
+        }
+      }
+
+      .sub-team-card-play-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: inherit;
+        color: #fff;
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.05);
+        width: 156px;
+        height: 56px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &::before {
+          content: none;
+        }
+      }
+    }
+
     .sub-team-card-video {
       width: 100%;
       height: 100%;

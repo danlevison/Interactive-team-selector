@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { SubTeamCardT } from "@/types";
@@ -11,6 +12,8 @@ export default function SubTeamCard({
   subTeamDetails,
   hideForMobile,
 }: SubTeamCardProps) {
+  const [showOverlay, setShowOverlay] = useState(true);
+
   const createEmbedUrl = (videoUrl: string) => {
     const embedUrl = videoUrl.replace(
       /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=/i,
@@ -40,21 +43,48 @@ export default function SubTeamCard({
       </div>
       <div className="sub-team-card-right">
         {!subTeamDetails?.video[0].video ? (
-          <Image
-            src={subTeamDetails?.video[0].placeholder.url!}
-            alt={subTeamDetails?.video[0].placeholder.alt!}
-            width={500}
-            height={500}
-            className="sub-team-card-placeholder"
-          />
+          <>
+            {subTeamDetails?.video[0].placeholder && (
+              <Image
+                src={subTeamDetails?.video[0].placeholder.url}
+                alt={subTeamDetails?.video[0].placeholder.alt}
+                width={500}
+                height={500}
+                className="sub-team-card-placeholder"
+              />
+            )}
+          </>
         ) : (
-          <iframe
-            className="sub-team-card-video"
-            src={createEmbedUrl(subTeamDetails?.video[0].video.url)}
-            title={subTeamDetails?.video[0].video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+          <>
+            {showOverlay ? (
+              <div className="sub-team-card-video-overlay">
+                <Image
+                  src={subTeamDetails.video[0].placeholder.url}
+                  alt={subTeamDetails?.video[0].placeholder.alt}
+                  priority
+                  width={500}
+                  height={500}
+                  className="sub-team-card-image-overlay"
+                />
+                <button
+                  onClick={() => setShowOverlay(false)}
+                  className="sub-team-card-play-btn"
+                >
+                  Watch the film
+                </button>
+              </div>
+            ) : (
+              <iframe
+                className="sub-team-card-video"
+                src={`${createEmbedUrl(
+                  subTeamDetails?.video[0].video.url
+                )}?autoplay=1&mute=1`}
+                title={subTeamDetails?.video[0].video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            )}
+          </>
         )}
       </div>
     </div>
