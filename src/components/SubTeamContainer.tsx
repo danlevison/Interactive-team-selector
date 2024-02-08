@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import SubTeamDropdown from "./SubTeamDropdown";
 import SubTeamBtnList from "./SubTeamBtnList";
@@ -19,16 +20,27 @@ export default function SubTeamContainer({ subTeams }: SubTeamContainerProps) {
     subTeams.find((team) => team.title.includes(selectedSubTeamParam)) ||
     subTeams[0];
   const isMobile = useMediaQuery("(max-width: 719px)");
+  const [hideForMobile, setHideForMobile] = useState(true);
 
   return (
     <>
       {isMobile ? (
-        <SubTeamDropdown options={subTeams} selectedSubTeam={selectedSubTeam} />
+        <SubTeamDropdown
+          options={subTeams}
+          selectedSubTeam={selectedSubTeam}
+          hideForMobile={hideForMobile}
+          setHideForMobile={setHideForMobile}
+        />
       ) : (
         <SubTeamBtnList subTeams={subTeams} selectedSubTeam={selectedSubTeam} />
       )}
 
-      {selectedSubTeam && <SubTeamCard subTeamDetails={selectedSubTeam} />}
+      {selectedSubTeam && (
+        <SubTeamCard
+          subTeamDetails={selectedSubTeam}
+          hideForMobile={hideForMobile}
+        />
+      )}
     </>
   );
 }

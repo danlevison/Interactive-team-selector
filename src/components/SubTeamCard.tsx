@@ -4,9 +4,13 @@ import type { SubTeamCardT } from "@/types";
 
 type SubTeamCardProps = {
   subTeamDetails: SubTeamCardT | null;
+  hideForMobile: boolean;
 };
 
-export default function SubTeamCard({ subTeamDetails }: SubTeamCardProps) {
+export default function SubTeamCard({
+  subTeamDetails,
+  hideForMobile,
+}: SubTeamCardProps) {
   const createEmbedUrl = (videoUrl: string) => {
     const embedUrl = videoUrl.replace(
       /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=/i,
@@ -16,7 +20,7 @@ export default function SubTeamCard({ subTeamDetails }: SubTeamCardProps) {
   };
 
   return (
-    <div className={`sub-team-card`}>
+    <div className={`sub-team-card ${hideForMobile ? "hide" : ""}`}>
       <div className="sub-team-card-left">
         <p className="sub-team-card-job-count">
           <strong>21</strong> jobs available

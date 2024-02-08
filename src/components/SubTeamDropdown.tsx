@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Overlay from "./Overlay";
+import Overlay from "@/components/Overlay";
 import caretDownIcon from "@/../public/caret-down.svg";
 import crossIcon from "@/../public/cross.svg";
 import type { SubTeamCardT } from "@/types";
@@ -11,16 +11,21 @@ import type { SubTeamCardT } from "@/types";
 type SubTeamDropdownProps = {
   options: SubTeamCardT[];
   selectedSubTeam: SubTeamCardT | null;
+  hideForMobile: boolean;
+  setHideForMobile: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function SubTeamDropdown({
   options,
   selectedSubTeam,
+  hideForMobile,
+  setHideForMobile,
 }: SubTeamDropdownProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleOptionClick = () => {
     setIsExpanded(false);
+    setHideForMobile(false);
   };
 
   return (
@@ -31,7 +36,9 @@ export default function SubTeamDropdown({
         aria-label="Open menu"
         aria-expanded={isExpanded}
       >
-        {!selectedSubTeam?.title ? "Select a sub-team" : selectedSubTeam.title}
+        {!selectedSubTeam?.title || hideForMobile
+          ? "Select a sub-team"
+          : selectedSubTeam.title}
         <Image
           src={caretDownIcon}
           alt=""
