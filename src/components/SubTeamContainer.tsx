@@ -2,8 +2,9 @@
 
 import { useSearchParams } from "next/navigation";
 import SubTeamDropdown from "./SubTeamDropdown";
-import type { SubTeamCardT } from "@/types";
 import SubTeamBtnList from "./SubTeamBtnList";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import type { SubTeamCardT } from "@/types";
 
 type SubTeamContainerProps = {
   subTeams: SubTeamCardT[];
@@ -16,13 +17,15 @@ export default function SubTeamContainer({ subTeams }: SubTeamContainerProps) {
   const selectedSubTeam =
     subTeams.find((team) => team.title.includes(selectedSubTeamParam)) ||
     subTeams[0];
-
-  console.log(selectedSubTeam);
+  const isMobile = useMediaQuery("(max-width: 719px)");
 
   return (
     <>
-      <SubTeamDropdown options={subTeams} selectedSubTeam={selectedSubTeam} />
-      <SubTeamBtnList subTeams={subTeams} selectedSubTeam={selectedSubTeam} />
+      {isMobile ? (
+        <SubTeamDropdown options={subTeams} selectedSubTeam={selectedSubTeam} />
+      ) : (
+        <SubTeamBtnList subTeams={subTeams} selectedSubTeam={selectedSubTeam} />
+      )}
     </>
   );
 }
