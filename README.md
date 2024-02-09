@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Installation Instructions
 
-## Getting Started
+1.Clone the repo by clicking the '<> code' button.
+2.Copy the HTTPS URL.
+3.Open a terminal of your choice.
+4.Change the current working directory to the location where you want the cloned directory.
+5.Type git clone and then paste the repo HTTPS URL.
+6.Press enter to create your local clone.
+7.Open the project folder in your IDE.
+8.'cd' into the working directory.
+9.Run 'npm install' to install all dependencies.
+10.Run in development mode using 'npm run dev'.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js
+- TypeScript
+- SCSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Objective
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a responsive and interactive Next.js component showcasing various sub-teams within an organisation. Your implementation should be dynamic, using TypeScript and SCSS for styles. The interface must allow users to filter and view content specific to each sub-team selected.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Additional Info
 
-## Learn More
+- No additional NPM packages were installed to complete this test.
+- The app works correctly against the latest version of Chrome, Firefox and Edge.
 
-To learn more about Next.js, take a look at the following resources:
+## Challenges that I faced
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+On the whole, constructing this app was a relatively comfortable process for me. Nonetheless, I encountered a few challenges during development. My familiarity with integrating videos into applications was limited, and initially, I considered utilising the HTML video element. However, I quickly realised that the video element is intended for playing video files directly. Recognising this, I switched to using the iframe element. To facilitate this, I needed the embedded video ID, so I used a regular expressions to substitute the "/watch" path with the "/embed" path, ensuring the iframe received the correct source.
