@@ -76,7 +76,8 @@ export default function SubTeamCard({
                     alt=""
                     width={42}
                     height={42}
-                    className="play-icon"
+                    className="sub-team-card-play-icon"
+                    aria-hidden={true}
                   />
                   Watch the film
                 </button>
