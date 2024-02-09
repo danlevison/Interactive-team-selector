@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Overlay from "@/components/Overlay";
-import caretDownIcon from "@/../public/caret-down.svg";
 import crossIcon from "@/../public/cross.svg";
 import type { SubTeamCardT } from "@/types";
+import SubTeamDropdownBtn from "./SubTeamDropdownBtn";
 
 type SubTeamDropdownProps = {
   options: SubTeamCardT[];
@@ -30,24 +30,14 @@ export default function SubTeamDropdown({
 
   return (
     <>
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="dropdown-btn"
-        aria-label="Open menu"
-        aria-expanded={isExpanded}
-      >
-        {!selectedSubTeam?.title || hideForMobile
-          ? "Select a sub-team"
-          : selectedSubTeam.title}
-        <Image
-          src={caretDownIcon}
-          alt=""
-          className="dropdown-caret-icon"
-          aria-hidden={true}
-        />
-      </button>
+      <SubTeamDropdownBtn
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+        selectedSubTeam={selectedSubTeam}
+        hideForMobile={hideForMobile}
+      />
       {isExpanded && (
-        <Overlay isExpanded={isExpanded} setIsExpanded={setIsExpanded}>
+        <Overlay setIsExpanded={setIsExpanded}>
           <div className="dropdown-menu animate-up">
             <div className="dropdown-menu-header">
               <h3 className="dropdown-menu-title">Select a sub-team</h3>
