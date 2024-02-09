@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import playIcon from "@/../public/play-icon.svg";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import type { SubTeamCardT } from "@/types";
 
 type SubTeamCardProps = {
@@ -14,6 +15,7 @@ export default function SubTeamCard({
   hideForMobile,
 }: SubTeamCardProps) {
   const [showOverlay, setShowOverlay] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 719px)");
 
   const createEmbedUrl = (videoUrl: string) => {
     const embedUrl = videoUrl.replace(
@@ -73,13 +75,13 @@ export default function SubTeamCard({
                 >
                   <Image
                     src={playIcon}
-                    alt=""
+                    alt="Watch the film"
                     width={42}
                     height={42}
                     className="sub-team-card-play-icon"
-                    aria-hidden={true}
+                    aria-hidden={!isMobile}
                   />
-                  Watch the film
+                  {isMobile ? "" : "Watch the film"}
                 </button>
               </div>
             ) : (
