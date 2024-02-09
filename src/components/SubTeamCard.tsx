@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import playIcon from "@/../public/play-icon.svg";
 import type { SubTeamCardT } from "@/types";
 
 type SubTeamCardProps = {
@@ -70,6 +71,13 @@ export default function SubTeamCard({
                   onClick={() => setShowOverlay(false)}
                   className="sub-team-card-play-btn"
                 >
+                  <Image
+                    src={playIcon}
+                    alt=""
+                    width={42}
+                    height={42}
+                    className="play-icon"
+                  />
                   Watch the film
                 </button>
               </div>
