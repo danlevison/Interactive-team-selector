@@ -1,15 +1,17 @@
+# Interactive Team Selector
+
 ## Installation Instructions
 
-1.Clone the repo by clicking the '<> code' button.
-2.Copy the HTTPS URL.
-3.Open a terminal of your choice.
-4.Change the current working directory to the location where you want the cloned directory.
-5.Type git clone and then paste the repo HTTPS URL.
-6.Press enter to create your local clone.
-7.Open the project folder in your IDE.
-8.'cd' into the working directory.
-9.Run 'npm install' to install all dependencies.
-10.Run in development mode using 'npm run dev'.
+1. Clone the repo by clicking the '<> code' button.
+2. Copy the HTTPS URL.
+3. Open a terminal of your choice.
+4. Change the current working directory to the location where you want the cloned directory.
+5. Type git clone and then paste the repo HTTPS URL.
+6. Press enter to create your local clone.
+7. Open the project folder in your IDE.
+8. 'cd' into the working directory.
+9. Run 'npm install' to install all dependencies.
+10. Run in development mode using 'npm run dev'.
 
 ## Technologies Used
 
